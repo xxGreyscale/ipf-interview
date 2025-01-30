@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "1ec3e8ea-51ea-4d5e-8754-57de42712975",
+		"name": "Interview IPF",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7437036"
+	},
+	"item": [
+		{
+			"name": "create-ADMIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"madebysalinastic.sn@gmail.com\",\n    \"password\": \"Salinastic\",\n    \"name\": \"ADMIN\",\n    \"roles\": [\"ROLE_ADMIN\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/users/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"madebysalinastic.sn@gmail.com\",\n    \"password\": \"Salinastic\",\n    \"name\": \"bows\",\n    \"roles\": [\"ROLE_USER\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/users/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login or token (USER)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"salim.nassor.sn@gmail.com\",\n    \"password\": \"Salinastic\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/generate-token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"generate-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login or token (admin)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"madebysalinastic.sn@gmail.com\",\n    \"password\": \"Salinastic\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/generate-token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"generate-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-project (Auth) Admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWxpbS5uYXNzb3Iuc25AZ21haWwuY29tIiwiaWF0IjoxNzM4MTU4MzM5LCJleHAiOjE3MzgxNjE5Mzl9.wbei1huntQO2ivaMDJaQcAdg8t5sAo6RRJdNcfI3kJM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"My Project Name\",\n  \"description\": \"A detailed description of my project and its goals.\",\n  \"startDate\": \"2024-04-20T10:00:00.000Z\",\n  \"endDate\": \"2024-12-31T17:00:00.000Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all projects (Auth)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWRlYnlzYWxpbmFzdGljLnNuQGdtYWlsLmNvbSIsImlhdCI6MTczODE1ODk1NCwiZXhwIjoxNzM4MTYyNTU0fQ.l5F-6o8E6XKjVcO0Wop7jt-_FZrv904VfeCwNUjyLSo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updating project",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWRlYnlzYWxpbmFzdGljLnNuQGdtYWlsLmNvbSIsImlhdCI6MTczODE2ODcwMiwiZXhwIjoxNzM4MTcyMzAyfQ.n64c3iZ2mUKRqF8TLgAPQTfWRUp1H1gKhm43GKKdZjU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Updated project name\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/pr-bc50c999-fabb-4ed7-ae40-5571087ff280",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"pr-bc50c999-fabb-4ed7-ae40-5571087ff280"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get project with id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWRlYnlzYWxpbmFzdGljLnNuQGdtYWlsLmNvbSIsImlhdCI6MTczODE2ODcwMiwiZXhwIjoxNzM4MTcyMzAyfQ.n64c3iZ2mUKRqF8TLgAPQTfWRUp1H1gKhm43GKKdZjU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/pr-bc50c999-fabb-4ed7-ae40-5571087ff280",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"pr-bc50c999-fabb-4ed7-ae40-5571087ff280"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleting project with Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWRlYnlzYWxpbmFzdGljLnNuQGdtYWlsLmNvbSIsImlhdCI6MTczODE2ODcwMiwiZXhwIjoxNzM4MTcyMzAyfQ.n64c3iZ2mUKRqF8TLgAPQTfWRUp1H1gKhm43GKKdZjU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/pr-a018788b-29e9-4036-a4fd-9884ceff523b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"pr-a018788b-29e9-4036-a4fd-9884ceff523b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create task in a project",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWRlYnlzYWxpbmFzdGljLnNuQGdtYWlsLmNvbSIsImlhdCI6MTczODE4NTkzNywiZXhwIjoxNzM4MTg5NTM3fQ.znH8w0iS1CI230j0_jZ8p5fHOK1AGSbt5b4WTo1_0Hg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Implement User Authentication\",\n  \"description\": \"Set up user registration, login, and authentication using JWT.\",\n  \"assigneeId\": \"us-e28f956f-7ef0-455e-bc1a-9a358cf8e920\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/projects/pr-58a09c22-f86f-481f-a57f-a12c9358c3c6/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"pr-58a09c22-f86f-481f-a57f-a12c9358c3c6",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update task ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWRlYnlzYWxpbmFzdGljLnNuQGdtYWlsLmNvbSIsImlhdCI6MTczODE5MTY0NSwiZXhwIjoxNzM4MTk1MjQ1fQ.E5mc0rSrz8Ajgym0R4o2Mew-dNBvt_5jTqmJAYvghuc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Implemented update task to task 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/tasks/task-e84ca307-8ab5-446a-8d80-2b2ec699bebb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"tasks",
+						"task-e84ca307-8ab5-446a-8d80-2b2ec699bebb"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
