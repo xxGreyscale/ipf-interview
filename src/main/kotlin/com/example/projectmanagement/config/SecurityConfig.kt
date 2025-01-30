@@ -11,10 +11,12 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler
 
 
 @Configuration
@@ -23,9 +25,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 class SecurityConfiguration(
     private val userInfoService: UserInfoService,
     private val authFilter: JwtAuthFilter,
-    private val passwordEncoder: PasswordEncoder
+    private val passwordEncoder: PasswordEncoder,
+    private val logoutHandler: LogoutHandler
 ) {
-
     @Bean
     fun userDetailsService(): UserDetailsService {
         return userInfoService
@@ -43,8 +45,7 @@ class SecurityConfiguration(
                         "/swagger-ui.html" ,
                         "/api/v1/users",
                         "/api/v1/users/**",
-                        "/api/v1/auth",
-                        "/api/v1/auth/**"
+                        "/api/v1/auth/login",
                     ).permitAll()
                     .requestMatchers(
                         "/api/v1/projects/create",
@@ -54,6 +55,11 @@ class SecurityConfiguration(
             .sessionManagement { it.sessionCreationPolicy(org.springframework.security.config.http.SessionCreationPolicy.STATELESS) }
             .authenticationProvider(authenticationProvider())
             .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter::class.java)
+            .logout { it.logoutUrl(
+                "/api/v1/auth/logout"
+            ).addLogoutHandler(logoutHandler)
+                .logoutSuccessHandler { _, _, _ -> SecurityContextHolder.clearContext()  }
+            }
             .build()
     }
 
