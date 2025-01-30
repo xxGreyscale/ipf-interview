@@ -18,7 +18,7 @@ class AuthenticationApi(
     private val jwtService: JwtService
 ) {
 
-    @PostMapping("/generate-token")
+    @PostMapping("/login")
     fun generateToken(
         @RequestBody request: AuthenticationRequest
     ): ResponseEntity<String> {
